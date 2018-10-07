@@ -55,7 +55,7 @@ class Controller:
             name, role, sr = player.GetInfo()
             avg += int(sr)
             playerCount += 1
-            print "{0} {1} {2}\n".format(name, role, sr)
+            print "{0} {1} {2}".format(name, role, sr)
         avg = avg/playerCount
         print "Average SR: " + str(avg)+"\n\n"
         print "Team 2\n"
@@ -65,9 +65,9 @@ class Controller:
             name, role, sr = player.GetInfo()
             avg += int(sr)
             playerCount += 1
-            print "{0} {1} {2}\n".format(name, role, sr)
+            print "{0} {1} {2}".format(name, role, sr)
         avg = avg / playerCount
-        print "Average SR: " + str(avg)+"\n\n"
+        print "Average SR: " + str(avg)+"\n"
 
 
     def SwapPlayers(self, player1Index, player2Index):
@@ -87,6 +87,7 @@ class Controller:
         for player in self.Team2:
             self.playerPool.append(player)
         teams = list(itertools.combinations(self.playerPool, 6))
+        teamCount = 0
         for combination in teams:
             team1 = list(combination)
             team2 = [player for player in self.playerPool if player not in team1]
@@ -105,6 +106,8 @@ class Controller:
                 playerCount += 1
             average2 = average2 / playerCount
             if abs(average1 - average2) <= diff:
+                teamCount += 1
+                print "\nTeam Set " + str(teamCount)
                 self.ShowTeams(team1, team2)
         sys.stdout = orig_stdout
         f.close()
