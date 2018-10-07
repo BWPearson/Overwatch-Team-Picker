@@ -78,7 +78,8 @@ class Controller:
 
     def GetCombos(self, diff):
         orig_stdout = sys.stdout
-        f =  open("teams.txt", "a+")
+        open('teams.txt', 'w').close()
+        f = open('teams.txt', 'a+')
         sys.stdout = f
         self.playerPool = []
         for player in self.Team1:
